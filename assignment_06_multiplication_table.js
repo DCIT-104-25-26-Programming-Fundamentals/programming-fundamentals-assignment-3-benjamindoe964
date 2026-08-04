@@ -60,3 +60,57 @@
 // =============================================================================
 
 
+const readlineSync = require("readline-sync");
+
+
+function printTable(number) {
+    console.log(`\nMultiplication Table for ${number}:`);
+
+    for (let i = 1; i <= 12; i++) {
+        console.log(`${number} x ${i} = ${number * i}`);
+    }
+}
+
+
+function printTablesUpToN(n) {
+    if (n <= 0) {
+        console.log("Error: Number must be greater than 0.");
+        return;
+    }
+
+    for (let table = 1; table <= n; table++) {
+        printTable(table);
+
+        if (table < n) {
+            console.log("---------------------------");
+        }
+    }
+}
+
+
+function main() {
+    
+    const number = readlineSync.questionInt("Enter a number: ");
+
+    if (number <= 0) {
+        console.log("Error: Number must be greater than 0.");
+        return;
+    }
+
+    printTable(number);
+
+    
+    const n = readlineSync.questionInt("\nEnter a number (N): ");
+
+    if (n <= 0) {
+        console.log("Error: Number must be greater than 0.");
+        return;
+    }
+
+    console.log();
+    printTablesUpToN(n);
+}
+
+
+main();
+
